@@ -12,19 +12,33 @@ nav {
   top: 0;
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  align-items: center;
+  padding: 10px 20px;
   background: rgba(0,0,0,0.7);
+  box-sizing: border-box;
 }
 
+/* Fix overflow */
 nav ul {
   list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 70%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Prevent text from stretching layout */
+nav li {
+  white-space: nowrap;
 }
 
 nav a {
   color: white;
   text-decoration: none;
+  font-size: 14px;
 }
 
 /* HERO */

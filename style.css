@@ -62,20 +62,19 @@ section {
 }
 
 /* PUBLICATIONS (✅ NEW COLUMN FIX) */
-.pub {
-  margin: 15px;
+.pub-section {
+  margin-bottom: 60px;
 }
 
 .pub-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   gap: 20px;
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pub-row {
-  width: 32%;
+  width: 280px;
   text-align: center;
 }
 
@@ -87,6 +86,11 @@ section {
 
 .pub-row img:hover {
   transform: scale(1.05);
+}
+
+.pub-row p {
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 /* CERTIFICATES */

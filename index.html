@@ -17,7 +17,7 @@
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#publications">Publications</a></li>
-    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#certificates">Experience</a></li>
     <li><a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a></li>
     <li><a href="https://www.linkedin.com/in/vishal-chanda-2b1053a6/" target="_blank">LinkedIn</a></li>
     <li><a href="https://www.scopus.com/authid/detail.uri?authorId=58697308400" target="_blank">Scopus</a></li>
@@ -36,22 +36,25 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <h2>About Me</h2>
-  <p>
-    🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology.
-    My work integrates RNA-seq analytics, molecular simulations, and experimental virology to
-    understand dengue virus pathogenesis and thrombocytopenia.
-  </p>
-
-  <p>
-    I design lipid-based nanocarriers, perform computational drug discovery,
-    and validate results using in-vitro virology techniques.
-  </p>
-
-  <p>
-    My vision is to bridge AI-driven modeling with experimental biology
-    to build next-generation antiviral therapeutics.
-  </p>
+  <div class="about-container">
+    <img src="assets/images/face.jpg" class="face-img">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>
+        🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology.
+        My work integrates RNA-seq analytics, molecular simulations, and experimental virology to
+        understand dengue virus pathogenesis and thrombocytopenia.
+      </p>
+      <p>
+        I design lipid-based nanocarriers, perform computational drug discovery,
+        and validate results using in-vitro virology techniques.
+      </p>
+      <p>
+        My vision is to bridge AI-driven modeling with experimental biology
+        to build next-generation antiviral therapeutics.
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- PUBLICATIONS -->
@@ -60,26 +63,31 @@
   <div id="pub-container"></div>
 </section>
 
-<!-- CERTIFICATES -->
+<!-- EXPERIENCE -->
 <section id="certificates">
-  <h2>Certificates</h2>
-
-  <div class="filters" id="cert-filters"></div>
-
+  <h2>Experience</h2>
   <div class="gallery" id="cert-gallery"></div>
 </section>
 
-<!-- 🔥 FULL PAGE BACKGROUND SLIDESHOW -->
+<!-- HERO SLIDESHOW -->
 <script>
 const images = [
   "assets/images/background/hero1.jpg",
   "assets/images/background/hero2.jpg",
-  "assets/images/background/hero3.jpg"
+  "assets/images/background/hero3.jpg",
+  "assets/images/background/hero4.jpg",
+  "assets/images/background/hero5.jpg",
+  "assets/images/background/hero6.jpg",
+  "assets/images/background/hero7.jpg",
+  "assets/images/background/hero8.jpg",
+  "assets/images/background/hero9.jpg",
+  "assets/images/background/hero10.jpg"
 ];
 
 let i = 0;
 
 function changeBackground() {
+  document.body.style.transition = "background 1.5s ease-in-out";
   document.body.style.background = `url('${images[i]}') center/cover no-repeat fixed`;
   i = (i + 1) % images.length;
 }
@@ -88,6 +96,7 @@ changeBackground();
 setInterval(changeBackground, 5000);
 </script>
 
+<!-- PUBLICATIONS SCRIPT (UNCHANGED) -->
 <script>
 fetch("data/publications.json")
   .then(res => res.json())
@@ -95,7 +104,6 @@ fetch("data/publications.json")
     const container = document.getElementById("pub-container");
 
     Object.keys(data).forEach(category => {
-
       const section = document.createElement("div");
       section.className = "pub-section";
 
@@ -106,7 +114,6 @@ fetch("data/publications.json")
       row.className = "pub-container";
 
       data[category].forEach(paper => {
-
         const card = document.createElement("div");
         card.className = "pub-row";
 
@@ -134,93 +141,54 @@ fetch("data/publications.json")
   });
 </script>
 
+<!-- EXPERIENCE SCRIPT -->
 <script>
 fetch("data/certificates.json")
   .then(res => res.json())
   .then(data => {
 
     const gallery = document.getElementById("cert-gallery");
-    const filters = document.getElementById("cert-filters");
 
-    // Create "All" button
-    const allBtn = document.createElement("button");
-    allBtn.innerText = "All";
-    allBtn.onclick = () => filterCerts("all");
-    filters.appendChild(allBtn);
+    const order = ["oral","poster","workshop","training","music","karate"];
 
-    Object.keys(data).forEach(category => {
+    order.forEach(category => {
 
-      // Filter buttons
-      const btn = document.createElement("button");
-      btn.innerText = category.toUpperCase();
-      btn.onclick = () => filterCerts(category);
-      filters.appendChild(btn);
+      if(!data[category]) return;
 
-      // Certificates
-      data[category].forEach(cert => {
+      const card = document.createElement("div");
+      card.className = "cert-card";
 
-        const card = document.createElement("div");
-        card.className = `cert-card cert ${category}`;
+      const title = document.createElement("h3");
+      title.innerText = category.toUpperCase();
 
-        const img = document.createElement("img");
-        img.src = `assets/images/certificates/${category}/${cert.file}.png`;
+      const img = document.createElement("img");
+      img.src = `assets/images/certificates/${category}/cert1.jpg`;
 
-        const title = document.createElement("p");
-        title.innerHTML = `<strong>${cert.title}</strong><br>${cert.year}`;
+      img.onclick = () => {
+        const popup = document.createElement("div");
+        popup.className = "popup";
 
-        const download = document.createElement("a");
-        download.href = img.src;
-        download.download = cert.file;
-        download.innerText = "Download";
-        download.className = "download-btn";
-
-        // Fullscreen on click
-        img.onclick = () => {
-          const popup = document.createElement("div");
-          popup.style.position = "fixed";
-          popup.style.top = "0";
-          popup.style.left = "0";
-          popup.style.width = "100%";
-          popup.style.height = "100%";
-          popup.style.background = "rgba(0,0,0,0.9)";
-          popup.style.display = "flex";
-          popup.style.justifyContent = "center";
-          popup.style.alignItems = "center";
-
+        data[category].forEach(cert => {
           const image = document.createElement("img");
-          image.src = img.src;
-          image.style.maxWidth = "90%";
-          image.style.maxHeight = "90%";
+          image.src = `assets/images/certificates/${category}/${cert.file}.jpg`;
 
-          popup.appendChild(image);
-          popup.onclick = () => popup.remove();
+          const link = document.createElement("a");
+          link.href = image.src;
+          link.download = cert.file;
+          link.appendChild(image);
 
-          document.body.appendChild(popup);
-        };
+          popup.appendChild(link);
+        });
 
-        card.appendChild(img);
-        card.appendChild(title);
-        card.appendChild(download);
+        popup.onclick = () => popup.remove();
+        document.body.appendChild(popup);
+      };
 
-        gallery.appendChild(card);
-      });
-
+      card.appendChild(title);
+      card.appendChild(img);
+      gallery.appendChild(card);
     });
 
-    // Filter function
-    window.filterCerts = function(category) {
-      const items = document.getElementsByClassName("cert");
-
-      for (let i = 0; i < items.length; i++) {
-        if (category === "all" || items[i].classList.contains(category)) {
-          items[i].style.display = "block";
-        } else {
-          items[i].style.display = "none";
-        }
-      }
-    };
-
-    filterCerts("all");
   });
 </script>
 

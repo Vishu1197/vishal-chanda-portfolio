@@ -1,0 +1,42 @@
+{
+  "oral": [
+    {
+      "file": "cert1",
+      "title": "Oral Presentation - Conference",
+      "year": "2024"
+    },
+    {
+      "file": "cert2",
+      "title": "Oral Presentation - Symposium",
+      "year": "2023"
+    }
+  ],
+  "poster": [
+    {
+      "file": "cert1",
+      "title": "Poster Presentation",
+      "year": "2024"
+    }
+  ],
+  "workshop": [
+    {
+      "file": "cert1",
+      "title": "Workshop Certificate",
+      "year": "2023"
+    }
+  ],
+  "karate": [
+    {
+      "file": "cert1",
+      "title": "Black Belt Certificate",
+      "year": "2022"
+    }
+  ],
+  "music": [
+    {
+      "file": "cert1",
+      "title": "Music Performance",
+      "year": "2021"
+    }
+  ]
+}

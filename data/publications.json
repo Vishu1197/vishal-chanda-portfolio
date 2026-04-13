@@ -1,13 +1,13 @@
 {
   "research": [
     {
-      "title": "Dengue Virus Pathogenesis Study",
+      "title": "Unveiling natural antiviral agents against dengue virus: a hybrid machine learning and molecular dynamics approach",
       "file": "paper1",
       "journal": "Elsevier Journal",
       "year": "2024"
     },
     {
-      "title": "Nanoparticle Drug Delivery",
+      "title": "Thrombocytopenia: The Prime Suspects Behind it",
       "file": "paper2",
       "journal": "Springer",
       "year": "2025"
@@ -15,7 +15,7 @@
   ],
   "review": [
     {
-      "title": "Phytochemical Antiviral Review",
+      "title": "Phytochemical as Anti-Dengue; Nanoparticle the Saviour",
       "file": "review1",
       "journal": "Review Journal",
       "year": "2025"
@@ -23,8 +23,14 @@
   ],
   "book": [
     {
-      "title": "Nanomedicine Chapter",
+      "title": "Obsessive-Compulsive Disorder",
       "file": "book1",
+      "journal": "Elsevier Book",
+      "year": "2024"
+    },
+    {
+      "title": "Microplastics in the Environment",
+      "file": "book2",
       "journal": "Elsevier Book",
       "year": "2024"
     }

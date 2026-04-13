@@ -67,23 +67,27 @@ section {
   margin: 15px;
 }
 
-/* ✅ NEW: Publications 3-column layout */
+/* PUBLICATIONS */
+.pub {
+  margin: 15px;
+}
+
+/* ✅ FORCE 3 ROW LAYOUT */
 .pub-container {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;   /* THIS IS THE KEY FIX */
+  gap: 40px;
+  align-items: center;
 }
 
 .pub-row {
-  width: 30%;
-  min-width: 250px;
+  width: 80%;
   text-align: center;
 }
 
 .pub-row img {
   width: 100%;
+  max-width: 600px;
   border-radius: 10px;
   transition: transform 0.3s;
 }

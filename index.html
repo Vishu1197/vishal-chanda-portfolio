@@ -64,46 +64,9 @@
 <section id="certificates">
   <h2>Certificates</h2>
 
-  <div class="category">
-    <h3>Oral Presentation</h3>
-    <div class="gallery">
-      <img src="assets/images/certificates/oral/Certificate1.png">
-      <img src="assets/images/certificates/oral/Certificate2.png">
-    </div>
-  </div>
+  <div class="filters" id="cert-filters"></div>
 
-  <div class="category">
-    <h3>Poster Presentation</h3>
-    <div class="gallery">
-      <img src="assets/images/certificates/poster/Certificate1.png">
-      <img src="assets/images/certificates/poster/Certificate2.png">
-    </div>
-  </div>
-
-  <div class="category">
-    <h3>Workshop</h3>
-    <div class="gallery">
-      <img src="assets/images/certificates/workshop/Certificate1.png">
-      <img src="assets/images/certificates/workshop/Certificate2.png">
-    </div>
-  </div>
-
-  <div class="category">
-    <h3>Karate</h3>
-    <div class="gallery">
-      <img src="assets/images/certificates/karate/Certificate1.png">
-      <img src="assets/images/certificates/karate/Certificate2.png">
-    </div>
-  </div>
-
-  <div class="category">
-    <h3>Music</h3>
-    <div class="gallery">
-      <img src="assets/images/certificates/music/Certificate1.png">
-      <img src="assets/images/certificates/music/Certificate2.png">
-    </div>
-  </div>
-
+  <div class="gallery" id="cert-gallery"></div>
 </section>
 
 <!-- 🔥 FULL PAGE BACKGROUND SLIDESHOW -->
@@ -168,6 +131,84 @@ fetch("data/publications.json")
       section.appendChild(row);
       container.appendChild(section);
     });
+  });
+</script>
+
+<script>
+fetch("data/certificates.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const gallery = document.getElementById("cert-gallery");
+    const filters = document.getElementById("cert-filters");
+
+    // Create "All" button
+    const allBtn = document.createElement("button");
+    allBtn.innerText = "All";
+    allBtn.onclick = () => filterCerts("all");
+    filters.appendChild(allBtn);
+
+    Object.keys(data).forEach(category => {
+
+      // Create filter buttons
+      const btn = document.createElement("button");
+      btn.innerText = category.toUpperCase();
+      btn.onclick = () => filterCerts(category);
+      filters.appendChild(btn);
+
+      // Create certificates
+      data[category].forEach(cert => {
+
+        const img = document.createElement("img");
+        img.src = `assets/images/certificates/${category}/${cert.file}.png`;
+        img.className = `cert ${category}`;
+
+        // Tooltip
+        img.title = `${cert.title} (${cert.year})`;
+
+        // Click to fullscreen
+        img.onclick = () => {
+          const popup = document.createElement("div");
+          popup.style.position = "fixed";
+          popup.style.top = "0";
+          popup.style.left = "0";
+          popup.style.width = "100%";
+          popup.style.height = "100%";
+          popup.style.background = "rgba(0,0,0,0.9)";
+          popup.style.display = "flex";
+          popup.style.justifyContent = "center";
+          popup.style.alignItems = "center";
+
+          const image = document.createElement("img");
+          image.src = img.src;
+          image.style.maxWidth = "90%";
+          image.style.maxHeight = "90%";
+
+          popup.appendChild(image);
+          popup.onclick = () => popup.remove();
+
+          document.body.appendChild(popup);
+        };
+
+        gallery.appendChild(img);
+      });
+
+    });
+
+    // Filter function
+    window.filterCerts = function(category) {
+      const items = document.getElementsByClassName("cert");
+
+      for (let i = 0; i < items.length; i++) {
+        if (category === "all" || items[i].classList.contains(category)) {
+          items[i].style.display = "block";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    };
+
+    filterCerts("all");
   });
 </script>
 

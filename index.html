@@ -150,23 +150,31 @@ fetch("data/certificates.json")
 
     Object.keys(data).forEach(category => {
 
-      // Create filter buttons
+      // Filter buttons
       const btn = document.createElement("button");
       btn.innerText = category.toUpperCase();
       btn.onclick = () => filterCerts(category);
       filters.appendChild(btn);
 
-      // Create certificates
+      // Certificates
       data[category].forEach(cert => {
+
+        const card = document.createElement("div");
+        card.className = `cert-card cert ${category}`;
 
         const img = document.createElement("img");
         img.src = `assets/images/certificates/${category}/${cert.file}.png`;
-        img.className = `cert ${category}`;
 
-        // Tooltip
-        img.title = `${cert.title} (${cert.year})`;
+        const title = document.createElement("p");
+        title.innerHTML = `<strong>${cert.title}</strong><br>${cert.year}`;
 
-        // Click to fullscreen
+        const download = document.createElement("a");
+        download.href = img.src;
+        download.download = cert.file;
+        download.innerText = "Download";
+        download.className = "download-btn";
+
+        // Fullscreen on click
         img.onclick = () => {
           const popup = document.createElement("div");
           popup.style.position = "fixed";
@@ -190,7 +198,11 @@ fetch("data/certificates.json")
           document.body.appendChild(popup);
         };
 
-        gallery.appendChild(img);
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(download);
+
+        gallery.appendChild(card);
       });
 
     });

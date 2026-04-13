@@ -1,0 +1,32 @@
+{
+  "research": [
+    {
+      "title": "Dengue Virus Pathogenesis Study",
+      "file": "paper1",
+      "journal": "Elsevier Journal",
+      "year": "2024"
+    },
+    {
+      "title": "Nanoparticle Drug Delivery",
+      "file": "paper2",
+      "journal": "Springer",
+      "year": "2025"
+    }
+  ],
+  "review": [
+    {
+      "title": "Phytochemical Antiviral Review",
+      "file": "review1",
+      "journal": "Review Journal",
+      "year": "2025"
+    }
+  ],
+  "book": [
+    {
+      "title": "Nanomedicine Chapter",
+      "file": "book1",
+      "journal": "Elsevier Book",
+      "year": "2024"
+    }
+  ]
+}

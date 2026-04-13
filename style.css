@@ -41,10 +41,9 @@ nav a {
   font-size: 14px;
 }
 
-/* HERO */
+/* HERO (fixed for slideshow) */
 .hero {
   height: 100vh;
-  background: url("assets/images/background/hero1.jpg") center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,32 +61,26 @@ section {
   text-align: center;
 }
 
-/* PUBLICATIONS */
+/* PUBLICATIONS (✅ NEW COLUMN FIX) */
 .pub {
   margin: 15px;
 }
 
-/* PUBLICATIONS */
-.pub {
-  margin: 15px;
-}
-
-/* ✅ FORCE 3 ROW LAYOUT */
 .pub-container {
   display: flex;
-  flex-direction: column;   /* THIS IS THE KEY FIX */
-  gap: 40px;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
 }
 
 .pub-row {
-  width: 80%;
+  width: 32%;
   text-align: center;
 }
 
 .pub-row img {
   width: 100%;
-  max-width: 600px;
   border-radius: 10px;
   transition: transform 0.3s;
 }

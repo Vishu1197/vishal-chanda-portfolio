@@ -71,8 +71,6 @@
 
 <!-- HERO SLIDESHOW -->
 <script>
-const hero = document.querySelector(".hero");
-
 const images = [
   "assets/images/background/hero1.jpg",
   "assets/images/background/hero2.jpg",
@@ -88,40 +86,14 @@ const images = [
 
 let i = 0;
 
-let current = hero;
-let nextLayer;
-
-function changeImage() {
-  nextLayer = document.createElement("div");
-
-  nextLayer.style.position = "absolute";
-  nextLayer.style.top = "0";
-  nextLayer.style.left = "0";
-  nextLayer.style.width = "100%";
-  nextLayer.style.height = "100%";
-  nextLayer.style.backgroundImage = `url(${images[i]})`;
-  nextLayer.style.backgroundSize = "cover";
-  nextLayer.style.backgroundPosition = "center";
-  nextLayer.style.opacity = "0";
-  nextLayer.style.transition = "opacity 1.5s ease-in-out";
-
-  hero.appendChild(nextLayer);
-
-  setTimeout(() => {
-    nextLayer.style.opacity = "1";
-  }, 50);
-
-  setTimeout(() => {
-    if (hero.children.length > 2) {
-      hero.removeChild(hero.children[0]);
-    }
-  }, 1600);
-
+function changeBackground() {
+  document.body.style.transition = "background 1.5s ease-in-out";
+  document.body.style.background = `url('${images[i]}') center/cover no-repeat fixed`;
   i = (i + 1) % images.length;
 }
 
-changeImage();
-setInterval(changeImage, 5000);
+changeBackground();
+setInterval(changeBackground, 5000);
 </script>
 
 <!-- PUBLICATIONS SCRIPT (UNCHANGED) -->

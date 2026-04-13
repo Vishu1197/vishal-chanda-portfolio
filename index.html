@@ -57,35 +57,7 @@
 <!-- PUBLICATIONS -->
 <section id="publications">
   <h2>Publications</h2>
-
-  <div class="pub-container">
-
-    <!-- Research Articles -->
-    <div class="pub-row">
-      <h3>Research Articles</h3>
-      <a href="assets/pdfs/research/paper1.pdf" target="_blank">
-  <img src="assets/pdfs/research/paper1-preview.jpg">
-      </a>
-    </div>
-
-    <!-- Review Articles -->
-    <div class="pub-row">
-      <h3>Review Articles</h3>
-      <a href="assets/pdfs/review/paper2.pdf" target="_blank">
-  <img src="assets/pdfs/review/paper2-preview.jpg">
-      </a>
-    </div>
-
-    <!-- Book Chapters -->
-    <div class="pub-row">
-      <h3>Book Chapters</h3>
-      <a href="assets/pdfs/book/paper3.pdf" target="_blank">
-  <img src="assets/pdfs/book/paper3-preview.jpg">
-      </a>
-    </div>
-
-  </div>
-
+  <div id="pub-container"></div>
 </section>
 
 <!-- CERTIFICATES -->
@@ -151,6 +123,52 @@ function changeBackground() {
 
 changeBackground();
 setInterval(changeBackground, 5000);
+</script>
+
+<script>
+fetch("data/publications.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("pub-container");
+
+    Object.keys(data).forEach(category => {
+
+      const section = document.createElement("div");
+      section.className = "pub-section";
+
+      const title = document.createElement("h3");
+      title.innerText = category.toUpperCase();
+
+      const row = document.createElement("div");
+      row.className = "pub-container";
+
+      data[category].forEach(paper => {
+
+        const card = document.createElement("div");
+        card.className = "pub-row";
+
+        const link = document.createElement("a");
+        link.href = `assets/pdfs/${category}/${paper.file}.pdf`;
+        link.target = "_blank";
+
+        const img = document.createElement("img");
+        img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
+
+        const caption = document.createElement("p");
+        caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
+
+        link.appendChild(img);
+        card.appendChild(link);
+        card.appendChild(caption);
+
+        row.appendChild(card);
+      });
+
+      section.appendChild(title);
+      section.appendChild(row);
+      container.appendChild(section);
+    });
+  });
 </script>
 
 </body>

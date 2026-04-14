@@ -97,21 +97,48 @@ const images = [
   "assets/images/background/hero10.jpg"
 ];
 
-let i = 0;
+let current = 0;
 
-function changeBg() {
-  hero.style.transition = "background-image 1.5s ease-in-out";
-  hero.style.backgroundImage = `url(${images[i]})`;
-  hero.style.backgroundSize = "cover";
-  hero.style.backgroundPosition = "center";
+// create two layers
+const bg1 = document.createElement("div");
+const bg2 = document.createElement("div");
 
-  i = (i + 1) % images.length;
-}
+bg1.className = "hero-bg visible";
+bg2.className = "hero-bg hidden";
 
-changeBg();
-setInterval(changeBg, 4000);
+hero.appendChild(bg1);
+hero.appendChild(bg2);
+
+// initial image
+bg1.style.backgroundImage = `url(${images[0]})`;
+
+let showingFirst = true;
+
+setInterval(() => {
+
+  const nextImage = images[current];
+
+  if (showingFirst) {
+    bg2.style.backgroundImage = `url(${nextImage})`;
+    bg2.classList.remove("hidden");
+    bg2.classList.add("visible");
+
+    bg1.classList.remove("visible");
+    bg1.classList.add("hidden");
+  } else {
+    bg1.style.backgroundImage = `url(${nextImage})`;
+    bg1.classList.remove("hidden");
+    bg1.classList.add("visible");
+
+    bg2.classList.remove("visible");
+    bg2.classList.add("hidden");
+  }
+
+  showingFirst = !showingFirst;
+  current = (current + 1) % images.length;
+
+}, 4000);
 </script>
-
 <!-- PUBLICATIONS SCRIPT (RESTORED) -->
 <script>
 fetch("data/publications.json")

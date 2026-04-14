@@ -73,7 +73,7 @@
 
   <div class="resume-card">
     <h3>My Resume</h3>
-    <a href="assets/resume/resume.pdf" target="_blank" download>
+    <a href="assets/resume/resume.pdf" target="_blank">
       <img src="assets/resume/resume-preview.jpg">
     </a>
   </div>
@@ -82,8 +82,6 @@
 
 <!-- HERO SLIDESHOW -->
 <script>
-const hero = document.querySelector(".hero");
-
 const images = [
   "assets/images/background/hero1.jpg",
   "assets/images/background/hero2.jpg",
@@ -97,98 +95,23 @@ const images = [
   "assets/images/background/hero10.jpg"
 ];
 
-let current = 0;
+let i = 0;
 
-// create two layers
-const bg1 = document.createElement("div");
-const bg2 = document.createElement("div");
+function changeBackground() {
+  document.body.style.backgroundImage = `url(${images[i]})`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.transition = "background-image 1.5s ease-in-out";
 
-bg1.className = "hero-bg visible";
-bg2.className = "hero-bg hidden";
+  i = (i + 1) % images.length;
+}
 
-hero.appendChild(bg1);
-hero.appendChild(bg2);
-
-// initial image
-bg1.style.backgroundImage = `url(${images[0]})`;
-
-let showingFirst = true;
-
-setInterval(() => {
-
-  const nextImage = images[current];
-
-  if (showingFirst) {
-    bg2.style.backgroundImage = `url(${nextImage})`;
-    bg2.classList.remove("hidden");
-    bg2.classList.add("visible");
-
-    bg1.classList.remove("visible");
-    bg1.classList.add("hidden");
-  } else {
-    bg1.style.backgroundImage = `url(${nextImage})`;
-    bg1.classList.remove("hidden");
-    bg1.classList.add("visible");
-
-    bg2.classList.remove("visible");
-    bg2.classList.add("hidden");
-  }
-
-  showingFirst = !showingFirst;
-  current = (current + 1) % images.length;
-
-}, 4000);
-</script>
-<!-- PUBLICATIONS SCRIPT (RESTORED) -->
-<script>
-fetch("data/publications.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("pub-container");
-
-    container.innerHTML = "";
-
-    Object.keys(data).forEach(category => {
-
-      const section = document.createElement("div");
-      section.className = "pub-section";
-
-      const title = document.createElement("h3");
-      title.innerText = category.toUpperCase();
-
-      const row = document.createElement("div");
-      row.className = "pub-container";
-
-      data[category].forEach(paper => {
-
-        const card = document.createElement("div");
-        card.className = "pub-row";
-
-        const link = document.createElement("a");
-        link.href = `assets/pdfs/${category}/${paper.file}.pdf`;
-        link.target = "_blank";
-
-        const img = document.createElement("img");
-        img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
-
-        const caption = document.createElement("p");
-        caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
-
-        link.appendChild(img);
-        card.appendChild(link);
-        card.appendChild(caption);
-
-        row.appendChild(card);
-      });
-
-      section.appendChild(title);
-      section.appendChild(row);
-      container.appendChild(section);
-    });
-  })
-  .catch(err => console.error("Publications error:", err));
+changeBackground();
+setInterval(changeBackground, 4000);
 </script>
 
+  
 <!-- EXPERIENCE POPUP -->
 <script>
 document.querySelector(".resume-card img").onclick = () => {

@@ -74,8 +74,7 @@
   <!-- RESUME -->
   <div class="exp-section">
     <h3>Resume</h3>
-    <a href="assets/resume/resume.pdf" target="_blank">
-      <img src="assets/resume/resume-preview.jpg" class="exp-img">
+    <img src="assets/resume/resume-preview.jpg" class="exp-img" onclick="openPDF('assets/resume/resume.pdf')">
     </a>
   </div>
 
@@ -174,6 +173,22 @@ function openImage(src) {
   img.src = src;
 
   overlay.appendChild(img);
+
+  overlay.onclick = () => overlay.remove();
+
+  document.body.appendChild(overlay);
+}
+</script>
+
+<script>
+function openPDF(src) {
+  const overlay = document.createElement("div");
+  overlay.className = "image-viewer";
+
+  const iframe = document.createElement("iframe");
+  iframe.src = src;
+
+  overlay.appendChild(iframe);
 
   overlay.onclick = () => overlay.remove();
 

@@ -233,7 +233,17 @@ fetch("./data/publications.json")
         const img = document.createElement("img");
         img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
 
-        img.onclick = () => openImage(img.src);
+        let folder = "";
+
+if (category === "research") {
+  folder = "research";
+} else if (category === "review") {
+  folder = "review";
+} else if (category === "book") {
+  folder = "book";
+}
+
+img.onclick = () => openPDF(`assets/pdfs/${folder}/${paper.file}.pdf`);
 
         const caption = document.createElement("p");
         caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
@@ -250,6 +260,22 @@ fetch("./data/publications.json")
     });
   })
   .catch(err => console.error("Publications error:", err));
+</script>
+
+<script>
+function openPDF(src) {
+  const overlay = document.createElement("div");
+  overlay.className = "image-viewer";
+
+  const iframe = document.createElement("iframe");
+  iframe.src = src;
+
+  overlay.appendChild(iframe);
+
+  overlay.onclick = () => overlay.remove();
+
+  document.body.appendChild(overlay);
+}
 </script>
   
   

@@ -204,3 +204,25 @@ section {
 .popup img:hover {
   transform: scale(1.08);
 }
+
+
+/* HERO BACKGROUND LAYERS */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.5s ease-in-out;
+  z-index: -1;
+}
+
+.hero-bg.hidden {
+  opacity: 0;
+}
+
+.hero-bg.visible {
+  opacity: 1;
+}

@@ -93,11 +93,8 @@ nav a:hover {
 }
 
 .overlay {
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  padding: 40px;
-  border-radius: 15px;
-  animation: fadeUp 1.5s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {

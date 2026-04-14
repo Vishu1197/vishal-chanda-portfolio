@@ -13,25 +13,73 @@ nav {
   top: 0;
   display: flex;
   justify-content: space-between;
-  padding: 15px 30px;
-  background: rgba(0,0,0,0.6);
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
+  box-sizing: border-box;
   z-index: 1000;
 }
 
+/* FIX OVERFLOW */
 nav ul {
+  list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 12px;
+  flex-wrap: wrap;           /* prevents overflow */
+  justify-content: flex-end;
+  max-width: 75%;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  white-space: nowrap;
 }
 
 nav a {
   color: white;
   text-decoration: none;
+  font-size: 14px;
   transition: 0.3s;
 }
 
 nav a:hover {
   color: #00d4ff;
+}
+
+/* HAMBURGER BUTTON */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* MOBILE NAVBAR */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav li {
+    padding: 10px 0;
+  }
 }
 
 /* HERO */

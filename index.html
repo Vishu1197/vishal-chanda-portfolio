@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vishal Chanda</title>
 
-<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishal Chanda</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 <nav>
   <h2>Vishal Chanda</h2>
 
-  <!-- HAMBURGER -->
+  <!-- Mobile Menu Button -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
   <ul id="nav-links">
@@ -29,7 +29,7 @@
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section id="home" class="hero">
   <div class="overlay hero-text">
     <h1>Hi, I am Vishal</h1>
@@ -38,48 +38,37 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="about-container">
     <img src="assets/images/face.jpg" class="face-img">
     <div class="about-text">
       <h2>About Me</h2>
-      <p>
-        🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology.
-        My work integrates RNA-seq analytics, molecular simulations, and experimental virology to
-        understand dengue virus pathogenesis and thrombocytopenia.
-      </p>
-      <p>
-        I design lipid-based nanocarriers, perform computational drug discovery,
-        and validate results using in-vitro virology techniques.
-      </p>
-      <p>
-        My vision is to bridge AI-driven modeling with experimental biology
-        to build next-generation antiviral therapeutics.
-      </p>
+      <p>🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology.</p>
+      <p>My work integrates RNA-seq analytics, molecular simulations, and experimental virology to understand dengue virus pathogenesis and thrombocytopenia.</p>
+      <p>I design lipid-based nanocarriers, perform computational drug discovery, and validate results using in-vitro virology techniques.</p>
+      <p>My vision is to bridge AI-driven modeling with experimental biology to build next-generation antiviral therapeutics.</p>
     </div>
   </div>
 </section>
 
-<!-- PUBLICATIONS -->
+<!-- ================= PUBLICATIONS ================= -->
 <section id="publications">
   <h2>Publications</h2>
   <div id="pub-container"></div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ================= EXPERIENCE ================= -->
 <section id="certificates">
   <h2>Experience</h2>
 
-  <!-- RESUME -->
+  <!-- Resume -->
   <div class="exp-section">
     <h3>Resume</h3>
-    <img src="assets/resume/resume-preview.jpg" 
-     class="exp-img" 
-     onclick="openResume()">
+    <img src="assets/resume/resume-preview.jpg" class="exp-img" onclick="openResume()">
   </div>
 
-  <!-- ACADEMIA -->
+  <!-- Academia -->
   <div class="exp-section">
     <h3>Academia</h3>
     <div class="exp-grid">
@@ -90,7 +79,7 @@
     </div>
   </div>
 
-  <!-- CO-CURRICULAR -->
+  <!-- Co-Curricular -->
   <div class="exp-section">
     <h3>Co-Curricular</h3>
     <div class="exp-grid">
@@ -108,7 +97,7 @@
     </div>
   </div>
 
-  <!-- EXTRA -->
+  <!-- Extra -->
   <div class="exp-section">
     <h3>Extra-Curricular</h3>
     <div class="exp-grid">
@@ -128,8 +117,49 @@
 
 </section>
 
-<!-- HERO SLIDESHOW -->
+<!-- ================= SCRIPTS ================= -->
+
 <script>
+/* ===== NAV MENU ===== */
+function toggleMenu() {
+  document.getElementById("nav-links").classList.toggle("active");
+}
+
+/* ===== IMAGE VIEWER ===== */
+function openImage(src) {
+  const overlay = document.createElement("div");
+  overlay.className = "image-viewer";
+
+  const img = document.createElement("img");
+  img.src = src;
+
+  overlay.appendChild(img);
+  overlay.onclick = () => overlay.remove();
+
+  document.body.appendChild(overlay);
+}
+
+/* ===== RESUME VIEWER ===== */
+function openResume() {
+  const overlay = document.createElement("div");
+  overlay.className = "image-viewer";
+
+  const container = document.createElement("div");
+  container.className = "resume-container";
+
+  ["resume1.jpg", "resume2.jpg"].forEach(page => {
+    const img = document.createElement("img");
+    img.src = `assets/resume/${page}`;
+    container.appendChild(img);
+  });
+
+  overlay.appendChild(container);
+  overlay.onclick = () => overlay.remove();
+
+  document.body.appendChild(overlay);
+}
+
+/* ===== HERO SLIDESHOW ===== */
 const images = [
   "assets/images/background/hero1.jpg",
   "assets/images/background/hero2.jpg",
@@ -144,74 +174,22 @@ const images = [
 ];
 
 let i = 0;
-
 function changeBackground() {
   document.body.style.backgroundImage = `url(${images[i]})`;
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
   document.body.style.backgroundAttachment = "fixed";
   document.body.style.transition = "background-image 1.5s ease-in-out";
-
   i = (i + 1) % images.length;
 }
-
 changeBackground();
 setInterval(changeBackground, 4000);
-</script>
 
-
-<script>
-function toggleMenu() {
-  document.getElementById("nav-links").classList.toggle("active");
-}
-</script>
-<script>
-function openImage(src) {
-  const overlay = document.createElement("div");
-  overlay.className = "image-viewer";
-
-  const img = document.createElement("img");
-  img.src = src;
-
-  overlay.appendChild(img);
-
-  overlay.onclick = () => overlay.remove();
-
-  document.body.appendChild(overlay);
-}
-</script>
-
-<script>
-function openResume() {
-  const overlay = document.createElement("div");
-  overlay.className = "image-viewer";
-
-  const container = document.createElement("div");
-  container.className = "resume-container";
-
-  // Add multiple pages
-  const pages = ["resume1.jpg", "resume2.jpg"];
-
-  pages.forEach(page => {
-    const img = document.createElement("img");
-    img.src = `assets/resume/${page}`;
-    container.appendChild(img);
-  });
-
-  overlay.appendChild(container);
-
-  overlay.onclick = () => overlay.remove();
-
-  document.body.appendChild(overlay);
-}
-</script>
-
-<script>
+/* ===== PUBLICATIONS LOADER ===== */
 fetch("./data/publications.json")
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById("pub-container");
-
     container.innerHTML = "";
 
     Object.keys(data).forEach(category => {
@@ -225,37 +203,24 @@ fetch("./data/publications.json")
       const row = document.createElement("div");
       row.className = "pub-container";
 
-      data[category].forEach(paper => {
+      let folder = category; // clean mapping
 
+      data[category].forEach(paper => {
         const card = document.createElement("div");
         card.className = "pub-row";
 
         const img = document.createElement("img");
-        img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
+        img.src = `assets/pdfs/${folder}/${paper.file}.jpg`;
 
-        let folder = "";
-
-if (category === "research") {
-  folder = "research";
-} else if (category === "review") {
-  folder = "review";
-} else if (category === "book") {
-  folder = "book";
-}
-
-const img = document.createElement("img");
-img.src = `assets/pdfs/${folder}/${paper.file}.jpg`;
-
-img.onclick = () => {
-  window.open(`assets/pdfs/${folder}/${paper.file}.pdf`, "_blank");
-};
+        img.onclick = () => {
+          window.open(`assets/pdfs/${folder}/${paper.file}.pdf`, "_blank");
+        };
 
         const caption = document.createElement("p");
         caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
 
         card.appendChild(img);
         card.appendChild(caption);
-
         row.appendChild(card);
       });
 
@@ -263,26 +228,8 @@ img.onclick = () => {
       section.appendChild(row);
       container.appendChild(section);
     });
-  })
-  .catch(err => console.error("Publications error:", err));
+  });
 </script>
 
-<script>
-function openPDF(src) {
-  const overlay = document.createElement("div");
-  overlay.className = "image-viewer";
-
-  const iframe = document.createElement("iframe");
-  iframe.src = src;
-
-  overlay.appendChild(iframe);
-
-  overlay.onclick = () => overlay.remove();
-
-  document.body.appendChild(overlay);
-}
-</script>
-  
-  
 </body>
 </html>

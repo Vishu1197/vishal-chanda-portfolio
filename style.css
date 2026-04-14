@@ -486,3 +486,492 @@ section {
   display: block;
   margin: 0 auto;
 }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: black;
+  scroll-behavior: smooth;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* FIX OVERFLOW */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;           /* prevents overflow */
+  justify-content: flex-end;
+  max-width: 75%;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  white-space: nowrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00d4ff;
+}
+
+/* HAMBURGER BUTTON */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* MOBILE NAVBAR */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav li {
+    padding: 10px 0;
+  }
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* HERO ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 20px;
+}
+
+/* ABOUT */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.face-img {
+  width: 250px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+
+.about-text {
+  max-width: 600px;
+  text-align: justify;
+}
+
+/* PUBLICATIONS */
+.pub-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.pub-row {
+  width: 300px;
+  transition: transform 0.3s;
+}
+
+.pub-row img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.pub-row:hover {
+  transform: translateY(-8px);
+}
+
+/* EXPERIENCE */
+.resume-card img {
+  width: 320px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.resume-card img:hover {
+  transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.popup img {
+  width: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.popup img:hover {
+  transform: scale(1.08);
+}
+
+
+/* HERO BACKGROUND LAYERS */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 0;   /* 🔥 FIXED */
+}
+
+.hero-bg.hidden {
+  opacity: 0;
+}
+
+.hero-bg.visible {
+  opacity: 1;
+}
+
+
+/* CENTER EXPERIENCE */
+#certificates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resume-card {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resume-card img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: black;
+  scroll-behavior: smooth;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* FIX OVERFLOW */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;           /* prevents overflow */
+  justify-content: flex-end;
+  max-width: 75%;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  white-space: nowrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00d4ff;
+}
+
+/* HAMBURGER BUTTON */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* MOBILE NAVBAR */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav li {
+    padding: 10px 0;
+  }
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* HERO ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 20px;
+}
+
+/* ABOUT */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.face-img {
+  width: 250px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+
+.about-text {
+  max-width: 600px;
+  text-align: justify;
+}
+
+/* PUBLICATIONS */
+.pub-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.pub-row {
+  width: 300px;
+  transition: transform 0.3s;
+}
+
+.pub-row img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.pub-row:hover {
+  transform: translateY(-8px);
+}
+
+/* EXPERIENCE */
+.resume-card img {
+  width: 320px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.resume-card img:hover {
+  transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.popup img {
+  width: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.popup img:hover {
+  transform: scale(1.08);
+}
+
+
+/* HERO BACKGROUND LAYERS */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 0;   /* 🔥 FIXED */
+}
+
+.hero-bg.hidden {
+  opacity: 0;
+}
+
+.hero-bg.visible {
+  opacity: 1;
+}
+
+
+/* CENTER EXPERIENCE */
+#certificates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resume-card {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resume-card img {
+  display: block;
+  margin: 0 auto;
+}

@@ -243,7 +243,12 @@ if (category === "research") {
   folder = "book";
 }
 
-img.onclick = () => openPDF(`assets/pdfs/${folder}/${paper.file}.pdf`);
+const img = document.createElement("img");
+img.src = `assets/pdfs/${folder}/${paper.file}.jpg`;
+
+img.onclick = () => {
+  window.open(`assets/pdfs/${folder}/${paper.file}.pdf`, "_blank");
+};
 
         const caption = document.createElement("p");
         caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;

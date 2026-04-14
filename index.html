@@ -196,33 +196,73 @@ document.querySelector(".resume-card img").onclick = () => {
   const popup = document.createElement("div");
   popup.className = "popup";
 
-  const sections = ["academia","cocurricular","extracurricular"];
+  // ---------- RESUME SECTION ----------
+  const resumeSection = document.createElement("div");
 
-  sections.forEach(section => {
+  const resumeTitle = document.createElement("h2");
+  resumeTitle.innerText = "RESUME";
+
+  const resumeLink = document.createElement("a");
+  resumeLink.href = "assets/resume/resume.pdf";
+  resumeLink.download = "Vishal_Chanda_Resume";
+
+  const resumeImg = document.createElement("img");
+  resumeImg.src = "assets/resume/resume-preview.jpg";
+
+  resumeLink.appendChild(resumeImg);
+  resumeSection.appendChild(resumeTitle);
+  resumeSection.appendChild(resumeLink);
+
+  popup.appendChild(resumeSection);
+
+  // ---------- CERTIFICATE SECTIONS ----------
+  const sections = [
+    {name: "ACADEMIA", path: "academia"},
+    {name: "CO-CURRICULAR", path: "cocurricular"},
+    {name: "EXTRA-CURRICULAR", path: "extracurricular"}
+  ];
+
+  sections.forEach(sec => {
 
     const block = document.createElement("div");
 
-    const title = document.createElement("h3");
-    title.innerText = section.toUpperCase();
+    const title = document.createElement("h2");
+    title.innerText = sec.name;
 
     block.appendChild(title);
 
-    for(let i=1;i<=5;i++){
-      const img = document.createElement("img");
-      img.src = `assets/images/certificates/${section}/cert${i}.jpg`;
+    // 🔥 AUTO LOAD IMAGES (no fixed limit)
+    let i = 1;
 
-      const link = document.createElement("a");
-      link.href = img.src;
-      link.download = `cert${i}`;
-      link.appendChild(img);
+    function loadImage() {
+      const img = new Image();
 
-      block.appendChild(link);
+      img.src = `assets/images/certificates/${sec.path}/cert${i}.jpg`;
+
+      img.onload = () => {
+        const link = document.createElement("a");
+        link.href = img.src;
+        link.download = `cert${i}`;
+
+        link.appendChild(img);
+        block.appendChild(link);
+
+        i++;
+        loadImage(); // try next
+      };
+
+      img.onerror = () => {
+        // stop when no more images
+      };
     }
+
+    loadImage();
 
     popup.appendChild(block);
   });
 
   popup.onclick = () => popup.remove();
+
   document.body.appendChild(popup);
 };
 </script>

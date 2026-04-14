@@ -3,6 +3,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   color: white;
   background: black;
+  scroll-behavior: smooth;
 }
 
 /* NAV */
@@ -12,136 +13,125 @@ nav {
   top: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: rgba(0,0,0,0.7);
-  box-sizing: border-box;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 nav ul {
-  list-style: none;
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  max-width: 70%;
-  padding: 0;
-  margin: 0;
-}
-
-nav li {
-  white-space: nowrap;
+  gap: 15px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 14px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00d4ff;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero {
-  height: 100vh;
   display: flex;
-  align-items: center;      /* vertical center */
-  justify-content: center;  /* horizontal center */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
 }
 
 .overlay {
-  background: rgba(0,0,0,0.6);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  padding: 40px;
+  border-radius: 15px;
+  animation: fadeUp 1.5s ease;
 }
 
-.overlay {
-  background: rgba(0,0,0,0.6);
-  padding: 30px;
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* HERO ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* SECTIONS */
 section {
-  padding: 80px 20px;
-  text-align: center;
+  padding: 100px 20px;
 }
 
 /* ABOUT */
 .about-container {
   display: flex;
   align-items: center;
-  gap: 40px;
   justify-content: center;
+  gap: 50px;
 }
 
 .face-img {
   width: 250px;
   border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
 }
 
 .about-text {
-  text-align: justify;
   max-width: 600px;
+  text-align: justify;
 }
 
 /* PUBLICATIONS */
-.pub-section {
-  margin-bottom: 60px;
-}
-
 .pub-container {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 30px;
   justify-content: center;
 }
 
 .pub-row {
-  width: 280px;
-  text-align: center;
+  width: 300px;
+  transition: transform 0.3s;
 }
 
 .pub-row img {
   width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s;
+  border-radius: 12px;
 }
 
-.pub-row img:hover {
-  transform: scale(1.05);
+.pub-row:hover {
+  transform: translateY(-8px);
 }
 
-.pub-row p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-/* EXPERIENCE (RESUME CARD) */
-.resume-card {
-  text-align: center;
-}
-
+/* EXPERIENCE */
 .resume-card img {
-  width: 300px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s;
+  width: 320px;
+  border-radius: 12px;
+  transition: 0.3s;
 }
 
 .resume-card img:hover {
   transform: scale(1.05);
 }
 
-/* POPUP (CERTIFICATES VIEW) */
+/* POPUP */
 .popup {
   position: fixed;
   top: 0;
@@ -150,15 +140,19 @@ section {
   height: 100%;
   background: rgba(0,0,0,0.95);
   overflow: auto;
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  padding: 40px;
 }
 
 .popup img {
-  width: 200px;
-  margin: 10px;
-  border-radius: 8px;
+  width: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.popup img:hover {
+  transform: scale(1.08);
 }

@@ -223,3 +223,21 @@ section {
 .hero-bg.visible {
   opacity: 1;
 }
+
+
+/* CENTER EXPERIENCE */
+#certificates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resume-card {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resume-card img {
+  display: block;
+  margin: 0 auto;
+}

@@ -975,3 +975,40 @@ section {
   display: block;
   margin: 0 auto;
 }
+
+
+/* CLEAN EXPERIENCE UI */
+.exp-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.exp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.exp-grid img {
+  width: 220px;
+  border-radius: 12px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.exp-grid img:hover {
+  transform: scale(1.08);
+}
+
+/* RESUME */
+.exp-img {
+  width: 300px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.exp-img:hover {
+  transform: scale(1.05);
+}

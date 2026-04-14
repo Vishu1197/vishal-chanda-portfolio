@@ -168,6 +168,45 @@ section {
   transform: translateY(-8px);
 }
 
+/* ================= PUBLICATIONS ALIGNMENT FIX ================= */
+
+/* Center the whole publications section */
+#publications {
+  text-align: center;
+}
+
+/* Each category block (Research / Review / Book) */
+.pub-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* 🔥 centers everything */
+  margin-bottom: 50px;
+}
+
+/* Container holding cards */
+.pub-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* 🔥 ensures center alignment */
+  gap: 30px;
+  max-width: 1000px;        /* 🔥 prevents over stretching */
+  margin: 0 auto;           /* 🔥 hard center */
+}
+
+/* Individual cards */
+.pub-row {
+  width: 280px;
+  text-align: center;
+}
+.image-viewer iframe {
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+  border: none;
+  background: white;
+}
+
+
 /* ================= EXPERIENCE ================= */
 #certificates {
   display: flex;

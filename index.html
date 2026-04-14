@@ -205,6 +205,53 @@ function openResume() {
   document.body.appendChild(overlay);
 }
 </script>
+
+<script>
+fetch("./data/publications.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("pub-container");
+
+    container.innerHTML = "";
+
+    Object.keys(data).forEach(category => {
+
+      const section = document.createElement("div");
+      section.className = "pub-section";
+
+      const title = document.createElement("h3");
+      title.innerText = category.toUpperCase();
+
+      const row = document.createElement("div");
+      row.className = "pub-container";
+
+      data[category].forEach(paper => {
+
+        const card = document.createElement("div");
+        card.className = "pub-row";
+
+        const img = document.createElement("img");
+        img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
+
+        img.onclick = () => openImage(img.src);
+
+        const caption = document.createElement("p");
+        caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
+
+        card.appendChild(img);
+        card.appendChild(caption);
+
+        row.appendChild(card);
+      });
+
+      section.appendChild(title);
+      section.appendChild(row);
+      container.appendChild(section);
+    });
+  })
+  .catch(err => console.error("Publications error:", err));
+</script>
+  
   
 </body>
 </html>

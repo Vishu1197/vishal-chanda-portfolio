@@ -1056,3 +1056,25 @@ section {
   border: none;
   background: white;
 }
+
+
+
+/* RESUME MULTI-PAGE VIEW (FIXED) */
+.resume-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.resume-container img {
+  width: 70%;
+  max-width: 900px;
+  min-width: 280px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0,212,255,0.2);
+}

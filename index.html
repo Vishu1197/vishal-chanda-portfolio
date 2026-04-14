@@ -74,8 +74,9 @@
   <!-- RESUME -->
   <div class="exp-section">
     <h3>Resume</h3>
-    <img src="assets/resume/resume-preview.jpg" class="exp-img" onclick="openPDF('assets/resume/resume.pdf')">
-    </a>
+    <img src="assets/resume/resume-preview.jpg" 
+     class="exp-img" 
+     onclick="openResume()">
   </div>
 
   <!-- ACADEMIA -->
@@ -181,14 +182,23 @@ function openImage(src) {
 </script>
 
 <script>
-function openPDF(src) {
+function openResume() {
   const overlay = document.createElement("div");
   overlay.className = "image-viewer";
 
-  const iframe = document.createElement("iframe");
-  iframe.src = src;
+  const container = document.createElement("div");
+  container.className = "resume-container";
 
-  overlay.appendChild(iframe);
+  // Add multiple pages
+  const pages = ["resume1.jpg", "resume2.jpg"];
+
+  pages.forEach(page => {
+    const img = document.createElement("img");
+    img.src = `assets/resume/${page}`;
+    container.appendChild(img);
+  });
+
+  overlay.appendChild(container);
 
   overlay.onclick = () => overlay.remove();
 

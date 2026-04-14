@@ -95,10 +95,17 @@ const images = [
 
 let i = 0;
 
-setInterval(() => {
-  hero.style.background = `url(${images[i]}) center/cover`;
+function changeBg() {
+  hero.style.transition = "background-image 1.5s ease-in-out";
+  hero.style.backgroundImage = `url(${images[i]})`;
+  hero.style.backgroundSize = "cover";
+  hero.style.backgroundPosition = "center";
+
   i = (i + 1) % images.length;
-}, 5000);
+}
+
+changeBg();
+setInterval(changeBg, 4000);
 </script>
 
 <!-- PUBLICATIONS SCRIPT (RESTORED) -->

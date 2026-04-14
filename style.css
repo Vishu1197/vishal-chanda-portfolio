@@ -18,7 +18,6 @@ nav {
   box-sizing: border-box;
 }
 
-/* Fix overflow */
 nav ul {
   list-style: none;
   display: flex;
@@ -30,7 +29,6 @@ nav ul {
   margin: 0;
 }
 
-/* Prevent text from stretching layout */
 nav li {
   white-space: nowrap;
 }
@@ -41,33 +39,20 @@ nav a {
   font-size: 14px;
 }
 
-/* HERO (fixed for slideshow) */
+/* HERO */
 .hero {
   height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1.5s ease-in-out;
+.hero-text {
+  margin-top: -80px;
 }
 
-.hero::before {
-  z-index: -2;
-}
-
-.hero::after {
-  z-index: -1;
-  opacity: 0;
+.overlay {
+  background: rgba(0,0,0,0.6);
+  padding: 30px;
 }
 
 /* SECTIONS */
@@ -76,7 +61,25 @@ section {
   text-align: center;
 }
 
-/* PUBLICATIONS (✅ NEW COLUMN FIX) */
+/* ABOUT */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+}
+
+.face-img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.about-text {
+  text-align: justify;
+  max-width: 600px;
+}
+
+/* PUBLICATIONS */
 .pub-section {
   margin-bottom: 60px;
 }
@@ -108,93 +111,40 @@ section {
   font-size: 14px;
 }
 
-/* CERTIFICATES */
-.gallery {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.gallery img {
-  width: 200px;
-  border-radius: 10px;
-}
-/* EXPERIENCE CARDS */
-.cert-card {
-  width: 250px;
-  background: rgba(0,0,0,0.6);
-  border-radius: 12px;
-  padding: 15px;
-  margin: 15px;
+/* EXPERIENCE (RESUME CARD) */
+.resume-card {
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.cert-card img {
-  width: 100%;
-  border-radius: 8px;
+.resume-card img {
+  width: 300px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.3s;
 }
 
-.cert-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+.resume-card img:hover {
+  transform: scale(1.05);
 }
 
-/* DOWNLOAD BUTTON */
-.download-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 6px 12px;
-  background: #444;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.download-btn:hover {
-  background: #888;
-}
-
-/* GALLERY SPACING */
-.gallery {
+/* POPUP (CERTIFICATES VIEW) */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  overflow: auto;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
-.about-container {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.face-img {
-  width: 250px;
-  border-radius: 50%;
-}
-
-.about-text {
-  text-align: justify;
-}
-
-.popup {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.9);
-  display:flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-}
-
 .popup img {
-  width:300px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 8px;
 }

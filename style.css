@@ -1047,3 +1047,12 @@ section {
     opacity: 1;
   }
 }
+
+
+.image-viewer iframe {
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+  border: none;
+  background: white;
+}

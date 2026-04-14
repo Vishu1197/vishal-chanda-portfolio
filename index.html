@@ -27,7 +27,7 @@
 
 <!-- HERO -->
 <section id="home" class="hero">
-  <div class="overlay">
+  <div class="overlay hero-text">
     <h1>Hi, I am Vishal</h1>
     <p>PhD Researcher | Virology | Bioinformatics | Nanomedicine</p>
     <p>Exploring viral pathogenesis & precision therapeutics</p>
@@ -40,19 +40,9 @@
     <img src="assets/images/face.jpg" class="face-img">
     <div class="about-text">
       <h2>About Me</h2>
-      <p>
-        🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology.
-        My work integrates RNA-seq analytics, molecular simulations, and experimental virology to
-        understand dengue virus pathogenesis and thrombocytopenia.
-      </p>
-      <p>
-        I design lipid-based nanocarriers, perform computational drug discovery,
-        and validate results using in-vitro virology techniques.
-      </p>
-      <p>
-        My vision is to bridge AI-driven modeling with experimental biology
-        to build next-generation antiviral therapeutics.
-      </p>
+      <p>🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology...</p>
+      <p>I design lipid-based nanocarriers, perform computational drug discovery...</p>
+      <p>My vision is to bridge AI-driven modeling with experimental biology...</p>
     </div>
   </div>
 </section>
@@ -66,10 +56,55 @@
 <!-- EXPERIENCE -->
 <section id="certificates">
   <h2>Experience</h2>
-  <div class="gallery" id="cert-gallery"></div>
+
+  <div class="resume-card">
+    <h3>My Resume</h3>
+    <a href="assets/resume/resume.pdf" target="_blank" download>
+      <img src="assets/resume/resume-preview.jpg">
+    </a>
+  </div>
+
 </section>
 
-<!-- HERO SLIDESHOW -->
+<!-- EXPERIENCE POPUP SCRIPT -->
+<script>
+document.querySelector(".resume-card img").onclick = () => {
+
+  const popup = document.createElement("div");
+  popup.className = "popup";
+
+  const sections = ["academia","cocurricular","extracurricular"];
+
+  sections.forEach(section => {
+
+    const block = document.createElement("div");
+
+    const title = document.createElement("h3");
+    title.innerText = section.toUpperCase();
+
+    block.appendChild(title);
+
+    for(let i=1;i<=5;i++){
+      const img = document.createElement("img");
+      img.src = `assets/images/certificates/${section}/cert${i}.jpg`;
+
+      const link = document.createElement("a");
+      link.href = img.src;
+      link.download = `cert${i}`;
+
+      link.appendChild(img);
+      block.appendChild(link);
+    }
+
+    popup.appendChild(block);
+  });
+
+  popup.onclick = () => popup.remove();
+  document.body.appendChild(popup);
+};
+</script>
+
+<!-- HERO SLIDESHOW (UNCHANGED) -->
 <script>
 const images = [
   "assets/images/background/hero1.jpg",
@@ -87,109 +122,12 @@ const images = [
 let i = 0;
 
 function changeBackground() {
-  document.body.style.transition = "background 1.5s ease-in-out";
   document.body.style.background = `url('${images[i]}') center/cover no-repeat fixed`;
   i = (i + 1) % images.length;
 }
 
 changeBackground();
 setInterval(changeBackground, 5000);
-</script>
-
-<!-- PUBLICATIONS SCRIPT (UNCHANGED) -->
-<script>
-fetch("data/publications.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("pub-container");
-
-    Object.keys(data).forEach(category => {
-      const section = document.createElement("div");
-      section.className = "pub-section";
-
-      const title = document.createElement("h3");
-      title.innerText = category.toUpperCase();
-
-      const row = document.createElement("div");
-      row.className = "pub-container";
-
-      data[category].forEach(paper => {
-        const card = document.createElement("div");
-        card.className = "pub-row";
-
-        const link = document.createElement("a");
-        link.href = `assets/pdfs/${category}/${paper.file}.pdf`;
-        link.target = "_blank";
-
-        const img = document.createElement("img");
-        img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
-
-        const caption = document.createElement("p");
-        caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
-
-        link.appendChild(img);
-        card.appendChild(link);
-        card.appendChild(caption);
-
-        row.appendChild(card);
-      });
-
-      section.appendChild(title);
-      section.appendChild(row);
-      container.appendChild(section);
-    });
-  });
-</script>
-
-<!-- EXPERIENCE SCRIPT -->
-<script>
-fetch("data/certificates.json")
-  .then(res => res.json())
-  .then(data => {
-
-    const gallery = document.getElementById("cert-gallery");
-
-    const order = ["oral","poster","workshop","training","music","karate"];
-
-    order.forEach(category => {
-
-      if(!data[category]) return;
-
-      const card = document.createElement("div");
-      card.className = "cert-card";
-
-      const title = document.createElement("h3");
-      title.innerText = category.toUpperCase();
-
-      const img = document.createElement("img");
-      img.src = `assets/images/certificates/${category}/cert1.jpg`;
-
-      img.onclick = () => {
-        const popup = document.createElement("div");
-        popup.className = "popup";
-
-        data[category].forEach(cert => {
-          const image = document.createElement("img");
-          image.src = `assets/images/certificates/${category}/${cert.file}.jpg`;
-
-          const link = document.createElement("a");
-          link.href = image.src;
-          link.download = cert.file;
-          link.appendChild(image);
-
-          popup.appendChild(link);
-        });
-
-        popup.onclick = () => popup.remove();
-        document.body.appendChild(popup);
-      };
-
-      card.appendChild(title);
-      card.appendChild(img);
-      gallery.appendChild(card);
-    });
-
-  });
 </script>
 
 </body>

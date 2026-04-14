@@ -40,9 +40,19 @@
     <img src="assets/images/face.jpg" class="face-img">
     <div class="about-text">
       <h2>About Me</h2>
-      <p>🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology...</p>
-      <p>I design lipid-based nanocarriers, perform computational drug discovery...</p>
-      <p>My vision is to bridge AI-driven modeling with experimental biology...</p>
+      <p>
+        🔬 Vishal Chanda, PhD Researcher specializing in Bioinformatics, Nanotechnology, and Virology.
+        My work integrates RNA-seq analytics, molecular simulations, and experimental virology to
+        understand dengue virus pathogenesis and thrombocytopenia.
+      </p>
+      <p>
+        I design lipid-based nanocarriers, perform computational drug discovery,
+        and validate results using in-vitro virology techniques.
+      </p>
+      <p>
+        My vision is to bridge AI-driven modeling with experimental biology
+        to build next-generation antiviral therapeutics.
+      </p>
     </div>
   </div>
 </section>
@@ -66,7 +76,82 @@
 
 </section>
 
-<!-- EXPERIENCE POPUP SCRIPT -->
+<!-- HERO SLIDESHOW -->
+<script>
+const hero = document.querySelector(".hero");
+
+const images = [
+  "assets/images/background/hero1.jpg",
+  "assets/images/background/hero2.jpg",
+  "assets/images/background/hero3.jpg",
+  "assets/images/background/hero4.jpg",
+  "assets/images/background/hero5.jpg",
+  "assets/images/background/hero6.jpg",
+  "assets/images/background/hero7.jpg",
+  "assets/images/background/hero8.jpg",
+  "assets/images/background/hero9.jpg",
+  "assets/images/background/hero10.jpg"
+];
+
+let i = 0;
+
+setInterval(() => {
+  hero.style.background = `url(${images[i]}) center/cover`;
+  i = (i + 1) % images.length;
+}, 5000);
+</script>
+
+<!-- PUBLICATIONS SCRIPT (RESTORED) -->
+<script>
+fetch("data/publications.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("pub-container");
+
+    container.innerHTML = "";
+
+    Object.keys(data).forEach(category => {
+
+      const section = document.createElement("div");
+      section.className = "pub-section";
+
+      const title = document.createElement("h3");
+      title.innerText = category.toUpperCase();
+
+      const row = document.createElement("div");
+      row.className = "pub-container";
+
+      data[category].forEach(paper => {
+
+        const card = document.createElement("div");
+        card.className = "pub-row";
+
+        const link = document.createElement("a");
+        link.href = `assets/pdfs/${category}/${paper.file}.pdf`;
+        link.target = "_blank";
+
+        const img = document.createElement("img");
+        img.src = `assets/pdfs/${category}/${paper.file}.jpg`;
+
+        const caption = document.createElement("p");
+        caption.innerHTML = `<strong>${paper.title}</strong><br>${paper.journal} (${paper.year})`;
+
+        link.appendChild(img);
+        card.appendChild(link);
+        card.appendChild(caption);
+
+        row.appendChild(card);
+      });
+
+      section.appendChild(title);
+      section.appendChild(row);
+      container.appendChild(section);
+    });
+  })
+  .catch(err => console.error("Publications error:", err));
+</script>
+
+<!-- EXPERIENCE POPUP -->
 <script>
 document.querySelector(".resume-card img").onclick = () => {
 
@@ -91,8 +176,8 @@ document.querySelector(".resume-card img").onclick = () => {
       const link = document.createElement("a");
       link.href = img.src;
       link.download = `cert${i}`;
-
       link.appendChild(img);
+
       block.appendChild(link);
     }
 
@@ -102,32 +187,6 @@ document.querySelector(".resume-card img").onclick = () => {
   popup.onclick = () => popup.remove();
   document.body.appendChild(popup);
 };
-</script>
-
-<!-- HERO SLIDESHOW (UNCHANGED) -->
-<script>
-const images = [
-  "assets/images/background/hero1.jpg",
-  "assets/images/background/hero2.jpg",
-  "assets/images/background/hero3.jpg",
-  "assets/images/background/hero4.jpg",
-  "assets/images/background/hero5.jpg",
-  "assets/images/background/hero6.jpg",
-  "assets/images/background/hero7.jpg",
-  "assets/images/background/hero8.jpg",
-  "assets/images/background/hero9.jpg",
-  "assets/images/background/hero10.jpg"
-];
-
-let i = 0;
-
-function changeBackground() {
-  document.body.style.background = `url('${images[i]}') center/cover no-repeat fixed`;
-  i = (i + 1) % images.length;
-}
-
-changeBackground();
-setInterval(changeBackground, 5000);
 </script>
 
 </body>

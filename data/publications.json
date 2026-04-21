@@ -1,14 +1,20 @@
 {
   "research": [
     {
-      "title": "Unveiling natural antiviral agents against dengue virus: a hybrid machine learning and molecular dynamics approach",
+      "title": "Conformational Perturbations in serum protein biomarkers specific to hepatic metabolism upon interaction with Polystyrene Nano-spherules",
       "file": "paper1",
       "journal": "Elsevier Journal",
-      "year": "2024"
+      "year": "2025"
+    },
+    {
+      "title": "Unveiling natural antiviral agents against dengue virus: a hybrid machine learning and molecular dynamics approach",
+      "file": "paper2",
+      "journal": "Elsevier Journal",
+      "year": "2025"
     },
     {
       "title": "Thrombocytopenia: The Prime Suspects Behind it",
-      "file": "paper2",
+      "file": "paper3",
       "journal": "Springer",
       "year": "2025"
     }
